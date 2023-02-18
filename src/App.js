@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Introduction from "./components/Introduction";
+import Counter from "./components/Counter";
 
 function App() {
+  const [show, setShow] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {show ? <Introduction ageProp={10} nameProp={"qwerty"} /> : <Counter />}
+      <button onClick={() => setShow(!show)}>Change render====</button>
     </div>
   );
 }
