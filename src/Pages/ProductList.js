@@ -1,18 +1,19 @@
-import Product from "./Component/Product";
+import Product from "../Component/Product";
+import { Link } from "react-router-dom";
 
 const data = [
   {
     id: 1,
-    productName: "T-shirt",  // 0 - 0
+    productName: "T-shirt", // 0 - 0
     price: 340,
     discount: 20,
   },
-//   {
-//     id: 2,
-//     productName: "Skirt",
-//     price: 340,
-//     discount: 20,
-//   },
+  //   {
+  //     id: 2,
+  //     productName: "Skirt",
+  //     price: 340,
+  //     discount: 20,
+  //   },
   {
     id: 3,
     productName: "Shirt", // 2 - 1
@@ -40,7 +41,9 @@ const ProductList = () => {
       {data.map((item, index) => {
         console.log("item, index", item, index);
         return (
-          <Product key={index} productName={item.productName} price={item.price}/>
+          <Link key={index} to={`/productDetial/${item.id}`}>
+            <Product productName={item.productName} price={item.price} />
+          </Link>
         );
       })}
     </div>
