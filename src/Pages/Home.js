@@ -13,6 +13,9 @@ const Home = () => {
       <Link to={`/product-list`}>
         <h2>Product List</h2>
       </Link>
+      <Link to={`/cat-list`}>
+        <h2>Cat List</h2>
+      </Link>
     </div>
   );
 };
