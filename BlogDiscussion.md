@@ -1,12 +1,12 @@
 1. Routes 
-    Static Routes 
+    - Static Routes 
         1. "/"
         2. "/bollywood"
         3. "/technology"
         4. "/hollywood"
         5. "/fitness"
         6. "/food"
-    Dynamic Routes 
+    - Dynamic Routes 
         1. "/article/:articleId"
 
 2. Header Component - (common component)
