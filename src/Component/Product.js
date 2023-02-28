@@ -1,12 +1,11 @@
 const Product = ({ productName, price }) => {
-    return (
-      <div>
-        <div>
-          <h1>{productName}</h1>
-          <h3>Price : {price}</h3>
-        </div>
+  return (
+    <div>
+      <div style={{ border: 1, borderWidth: 1, flex:1, backgroundColor: "green" }}>
+        <h2>{productName}</h2>
+        <h3>Price : {price}</h3>
       </div>
-    );
-  };
-  export default Product;
-  
+    </div>
+  );
+};
+export default Product;

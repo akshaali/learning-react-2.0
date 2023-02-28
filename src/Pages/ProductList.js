@@ -36,7 +36,7 @@ const data = [
 
 const ProductList = () => {
   return (
-    <div key={"2214321"}>
+    <div>
       <h1>Product List</h1>
       {data.map((item, index) => {
         console.log("item, index", item, index);
