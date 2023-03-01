@@ -1,7 +1,7 @@
 Today's Topic 
 1. Pure Component (Class Based Component) 
   It renders the same output for the same set of states and props
-  - works on shallow comparison betweeen prev state and next state & props
+  - works on shallow comparison betweeen prev and next state & props
     Shallow comparison function 
         1. keys should be equal
         2. key's values should be equal
