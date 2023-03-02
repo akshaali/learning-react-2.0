@@ -1,0 +1,35 @@
+React Hooks 
+1. useRef
+    features:
+        - value will persist between re-renders
+        - it doesn't cause any re-rendering when updated
+    use Case :
+        - accesing dom
+
+2. useCallback
+    features:
+        - Optimization process 
+        - memorized function
+        - Then it will not re-initialize the function on every render
+         only when states in dependency arrat change
+3. useMemo
+    features:
+        - Optimization process
+        - memorized value
+        -Then it will not re-calculate the value on every render only 
+         when states in dependency arrat change
+4. useReducer 
+    features:
+        - this is basically similar to useState hooks 
+        - This helps to update the complicated state easily.
+        syntax: 
+            const [stateName, callReducerFunction] = useReducer(reducerFunction, initialState)
+            const [stateName, dispatch] = useReducer(reducer, initialState)
+5. useState 
+    feature:
+        - This allows us to initialize, access and update the state.
+6. useEffect 
+    feature:
+        - this helps us to manage the lifecycle phases of the functional component 
+        - This helps us to manage the side effects of the component
+        - this helps allows us to create a cleanup function in our components(componentWillUnmount())
