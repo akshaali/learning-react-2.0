@@ -1,0 +1,6 @@
+Scenario                        UnControlled Component              Controlled Component
+1. one-time value retrieval             Yes                               Yes
+2. Instant field validation              No                               Yes
+3. Validation on Submit                  Yes                              Yes 
+4. Conditionaly disabling the Submit     No                               Yes 
+5. Dynamic input fields                  No                               Yes 
