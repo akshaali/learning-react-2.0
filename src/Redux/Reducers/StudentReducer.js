@@ -13,7 +13,8 @@ const inititalState = {
 const StudentReducer = (state = inititalState, action) => {
   switch (action.type) {
     case ADD_NEW_STUDENT: {
-      return { ...state };
+      console.log("ADD_NEW_STUDENT reducer", state, action);
+      return { ...state, studentList: [...state.studentList, action.payload] };
     }
     case GET_STUDENT_DETAILS: {
       return { ...state };

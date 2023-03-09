@@ -11,6 +11,7 @@ export const getStudentDetailAction = (payload) => {
 };
 
 export const addNewStudentAction = (payload) => {
+  console.log("addNewStudentAction called", payload);
   return {
     type: ADD_NEW_STUDENT,
     payload,

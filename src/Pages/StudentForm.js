@@ -1,74 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
+import { addNewStudentAction } from "../Redux/Actions/StudentsAction";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import "../App.css"
+import "../App.css";
 
 function StudentForm() {
-  // const contextData = useContext(DataApi);
-  // const index = useLocation().state.data;
-  // const Nav = useNavigate();
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    course: "",
+    batch: "",
+  });
 
-  // const updateObj ={
-  //     name: contextData.Start[index].name,
-  //     age:contextData.Start[index].age,
-  //     course:contextData.Start[index].course,
-  //     batch:contextData.Start[index].batch,
-  //     id: contextData.Start[index].id,
-  // }
-
-  const handlechane = (e) => {
-    // updateObj[e.target.name] = e.target.value;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleUpdate = () => {
-    // contextData.Start[index]=updateObj
-    // Nav(-1)
+    console.log("handleUpdate called");
+    dispatch(
+      addNewStudentAction({ ...formData, id: `id-${new Date().getTime()}` })
+    );
+    goBack();
   };
 
   function goBack() {
-    // window.history.back();
+    navigation(-1);
   }
+
+  const isDisabled = () => {
+    if (formData.name && formData.age && formData.batch && formData.course) {
+      return false;
+    }
+    return true;
+  };
+
+  console.log("Formdata", formData);
 
   return (
     <>
       <div className="tableEdit">
         <div className="name">
           <fieldset>
-            <legend>Name</legend>
+            <legend>Name*</legend>
             <input
               placeholder={"name"}
               name="name"
-              onChange={handlechane}
-            ></input>
+              onChange={handleChange}
+              value={formData.name}
+            />
           </fieldset>
         </div>
         <div className="age">
           <fieldset>
-            <legend>Age</legend>
+            <legend>Age*</legend>
             <input
               placeholder={"age"}
               name="age"
-              onChange={handlechane}
-            ></input>
+              type={"number"}
+              onChange={handleChange}
+              value={formData.age}
+            />
           </fieldset>
         </div>
         <div className="course">
           <fieldset>
-            <legend>Course</legend>
+            <legend>Course*</legend>
             <input
               placeholder={"Course"}
               name="course"
-              onChange={handlechane}
-            ></input>
+              onChange={handleChange}
+              value={formData.course}
+            />
           </fieldset>
         </div>
         <div className="batch">
           <fieldset>
-            <legend>Batch</legend>
+            <legend>Batch*</legend>
             <input
               placeholder={"batch"}
               name="batch"
-              onChange={handlechane}
-            ></input>
+              onChange={handleChange}
+              value={formData.batch}
+            />
           </fieldset>
         </div>
       </div>
@@ -79,7 +96,11 @@ function StudentForm() {
           </button>
         </div>
         <div>
-          <button className="btn-edit" onClick={handleUpdate}>
+          <button
+            disabled={isDisabled()}
+            className="btn-edit"
+            onClick={handleUpdate}
+          >
             Update
           </button>
         </div>
