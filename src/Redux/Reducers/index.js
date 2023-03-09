@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import CounterReducer from "./CounterReducer";
-import ABCReducer from "./AbcReducer";
+import StudentReducer from "./StudentReducer";
 
 const Reducer = combineReducers({
   counterReducer: CounterReducer,
-  abcReducer: ABCReducer,
+  studentReducer: StudentReducer,
 });
 
 export default Reducer
