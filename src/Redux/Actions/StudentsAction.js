@@ -19,6 +19,7 @@ export const addNewStudentAction = (payload) => {
 };
 
 export const updateStudentDetailAction = (payload) => {
+  console.log("updateStudentDetailAction called", payload);
   return {
     type: UPDATE_STUDENT_DETAIL,
     payload,

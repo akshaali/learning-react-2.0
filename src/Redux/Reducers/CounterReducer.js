@@ -14,6 +14,7 @@ const CounterReducer = (state = inititalState, action) => {
       console.log("INCREAMENT_COUNTER reducer called", state, action);
       return { ...state, count: state.count + 1 };
     }
+
     case DECREAMENT_COUNTER: {
       console.log("DECREAMENT_COUNTER redcer called", state, action);
       return { ...state, count: state.count - 1 };

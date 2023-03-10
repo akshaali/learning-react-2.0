@@ -20,10 +20,21 @@ const StudentReducer = (state = inititalState, action) => {
       return { ...state };
     }
     case UPDATE_STUDENT_DETAIL: {
-      return { ...state };
+      console.log("UPDATE_STUDENT_DETAIL reducer", state, action);
+      const updatedStudentList = state.studentList.map((item) => {
+        if (item?.id === action?.payload?.id) {
+          return action?.payload;
+        }
+        return item;
+      });
+      return { ...state, studentList: updatedStudentList };
     }
     case DELETE_STUDENT_DETAIL: {
-      return { ...state };
+      console.log("DELETE_STUDENT_DETAIL reducer", state, action);
+      const updatedStudentList = state.studentList.filter(
+        (item) => item?.id !== action?.payload
+      );
+      return { ...state, studentList: updatedStudentList };
     }
     default: {
       return state;

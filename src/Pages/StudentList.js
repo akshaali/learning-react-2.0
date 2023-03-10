@@ -1,17 +1,32 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../Components/NavBar";
+import { deleteStudentDetailAction } from "../Redux/Actions/StudentsAction";
 import "../App.css";
 
 function StudentList() {
   const navigation = useNavigate();
-  const studentList = useSelector((state) => state.studentReducer.studentList);
-  console.log("studentList", studentList);
+  const dispatch = useDispatch();
+  const studentList = useSelector(
+    (state) => state?.studentReducer?.studentList
+  );
 
   const handleAddNewStudent = () => {
     navigation("/addStudent");
   };
+
+  const handleEditStudent = (item) => {
+    navigation(`/editStudent/${item.id}`, { state: item });
+  };
+
+  const handleDeleteStudent = (id) => {
+    console.log("handleDeleteStudent function called")
+    dispatch(deleteStudentDetailAction(id));
+  };
+
+  console.log("studentList", studentList);
+
   return (
     <>
       <Navbar />
@@ -45,20 +60,25 @@ function StudentList() {
                   <td>{item?.course}</td>
                   <td>{item?.batch}</td>
                   <td>
-                    <Link
-                      to="/editstudent"
-                      state={{ data: index }}
-                      style={{ color: "black", textDecoration: "underline" }}
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
-                      Edit
-                    </Link>
-                    <Link
-                      to="/editstudent"
-                      state={{ data: index }}
-                      style={{ color: "black", textDecoration: "underline" }}
-                    >
-                      Delete
-                    </Link>
+                      <button
+                        style={{
+                          marginRight: 10,
+                        }}
+                        onClick={() => handleEditStudent(item)}
+                      >
+                        Edit
+                      </button>
+                      <button onClick={() => handleDeleteStudent(item.id)}>
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               );

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { addNewStudentAction } from "../Redux/Actions/StudentsAction";
 import { useDispatch } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { updateStudentDetailAction } from "../Redux/Actions/StudentsAction";
 import "../App.css";
 
 function StudentForm() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const params = useParams();
   const navigation = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -13,17 +16,32 @@ function StudentForm() {
     course: "",
     batch: "",
   });
+  const isEdit = useMemo(() => {
+    if (params.studentId) return true;
+    else return false;
+  }, [params]);
+
+  useEffect(() => {
+    const data = location.state;
+    if (data) {
+      setFormData(data);
+    }
+  }, [location.state]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleUpdate = () => {
+  const handleAddOrUpdate = () => {
     console.log("handleUpdate called");
-    dispatch(
-      addNewStudentAction({ ...formData, id: `id-${new Date().getTime()}` })
-    );
+    if (isEdit) {
+      dispatch(updateStudentDetailAction(formData));
+    } else {
+      dispatch(
+        addNewStudentAction({ ...formData, id: `id-${new Date().getTime()}` })
+      );
+    }
     goBack();
   };
 
@@ -38,10 +56,11 @@ function StudentForm() {
     return true;
   };
 
-  console.log("Formdata", formData);
+  console.log("Formdata", formData, location, params, isEdit);
 
   return (
     <>
+      <h1>{isEdit ? "Edit Student Detail" : "Add New Student"}</h1>
       <div className="tableEdit">
         <div className="name">
           <fieldset>
@@ -99,9 +118,9 @@ function StudentForm() {
           <button
             disabled={isDisabled()}
             className="btn-edit"
-            onClick={handleUpdate}
+            onClick={handleAddOrUpdate}
           >
-            Update
+            {isEdit ? "Update" : "Add"}
           </button>
         </div>
       </div>
