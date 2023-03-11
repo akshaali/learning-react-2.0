@@ -1,4 +1,4 @@
-import axois from "axios";
+import axios from "axios";
 
 export const APICaller = ({ url, data, method = "GET" }) => {
   return new Promise((resolve, reject) => {
@@ -6,13 +6,13 @@ export const APICaller = ({ url, data, method = "GET" }) => {
     if (data) {
       payload.data = data;
     }
-    axois(payload)
+    axios(payload)
       .then((res) => {
-        console.log("API resolved Successfully", res);
+        // console.log("API resolved Successfully", res);
         resolve(res);
       })
       .catch((err) => {
-        console.log("API failed", err);
+        // console.log("API failed", err);
         reject(err);
       });
   });
