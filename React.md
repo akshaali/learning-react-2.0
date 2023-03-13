@@ -8,33 +8,33 @@ React
 4. Components** 
     - Class based component
     - Function based component
-5. states and Props**
-5. Lifecycle Methods (w.r.t class and functions based component)***
+6. states and Props**
+7. Lifecycle Methods (w.r.t class and functions based component)***
     - Mounting 
     - Updating
     - Unmountin 
-6. Form handling* (implementation POV**)
+8. Form handling* (implementation POV**)
     - State handling 
     - validation
     - submit fucntion 
     - preventDefault()
-7. Hooks**
+9. Hooks**
     - useState**
     - useEffec**
     - useCallback*
     - useMemo*
     - useRef* 
     - useReducer*
-8. Routing* 
+10. Routing* 
     - react-router-dom, BrowserRouter, Routes, Route
     - static and Dynamic Routes, 404 route
     - Link
     - useNavigation, useLocation, useParams
-7. Context API*
+11. Context API*
     - createContext
     - instance
     - useContext
-9. Miscellaneous topics**
+12. Miscellaneous topics**
     - Props drilling 
     - State uplifting
     - Pure Components (shallow comparision)
@@ -46,13 +46,13 @@ React
     - webpack 
     - babel
     - Axios/fetch(get, post, put, delete)
-10. Redux** 
+13. Redux** 
     - react-redux, reduxjs/toolkit
     - Actions, Reducer, Store
     - Provider 
     - useSelector 
     - useDispatch
-11. Middleware*
+14. Middleware*
     - thunk
     - saga
     - saga v/s thunk
