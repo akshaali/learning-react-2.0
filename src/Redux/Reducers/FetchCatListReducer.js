@@ -1,4 +1,5 @@
 import {
+  FETCH_CAT_LIST,
   FETCH_CAT_LIST_SUCCESSFULL,
   FETCH_CAT_LIST_ERROR,
 } from "../Actions/FetchCatListActions";
@@ -6,15 +7,27 @@ import {
 const inititalState = {
   catList: [],
   error: false,
+  loading: false,
 };
 
 const FetchCatListReducer = (state = inititalState, action) => {
   switch (action.type) {
+    case FETCH_CAT_LIST: {
+      console.log("FETCH_CAT_LIST", action);
+      return { ...state, loading: true };
+    }
     case FETCH_CAT_LIST_SUCCESSFULL: {
-      return { ...state, catlist: action.payload, error: false };
+      console.log("FETCH_CAT_LIST_SUCCESSFULL", action);
+      return {
+        ...state,
+        catList: action.payload,
+        error: false,
+        loading: false,
+      };
     }
     case FETCH_CAT_LIST_ERROR: {
-      return { ...state, error: true };
+      console.log("FETCH_CAT_LIST_ERROR", action);
+      return { ...state, error: true, loading: false };
     }
     default: {
       return state;
