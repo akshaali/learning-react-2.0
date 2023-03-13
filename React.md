@@ -27,11 +27,12 @@ React
     - useReducer*
 8. Routing* 
     - react-router-dom, BrowserRouter, Routes, Route
-    - static and Dynamic Routes 
+    - static and Dynamic Routes, 404 route
     - Link
     - useNavigation, useLocation, useParams
 7. Context API*
     - createContext
+    - instance
     - useContext
 9. Miscellaneous topics**
     - Props drilling 
@@ -44,11 +45,13 @@ React
     - Statefull and stateless components
     - webpack 
     - babel
-    - Axios/fetch
+    - Axios/fetch(get, post, put, delete)
 10. Redux** 
     - react-redux, reduxjs/toolkit
     - Actions, Reducer, Store
     - Provider 
+    - useSelector 
+    - useDispatch
 11. Middleware*
     - thunk
     - saga
