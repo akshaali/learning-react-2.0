@@ -1,11 +1,11 @@
 export const ADD_NEW_STUDENT = "ADD_NEW_STUDENT";
-export const GET_STUDENT_DETAILS = "GET_STUDENT_DETAILS";
+export const SEARCH_STUDENT_BY_NAME = "SEARCH_STUDENT_BY_NAME";
 export const UPDATE_STUDENT_DETAIL = "UPDATE_STUDENT_DETAIL";
 export const DELETE_STUDENT_DETAIL = "DELETE_STUDENT_DETAIL";
 
-export const getStudentDetailAction = (payload) => {
+export const searchStudentByNameAction = (payload) => {
   return {
-    type: GET_STUDENT_DETAILS,
+    type: SEARCH_STUDENT_BY_NAME,
     payload,
   };
 };

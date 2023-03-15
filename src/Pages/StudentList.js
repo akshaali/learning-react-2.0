@@ -2,7 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../Components/NavBar";
-import { deleteStudentDetailAction } from "../Redux/Actions/StudentsAction";
+import {
+  deleteStudentDetailAction,
+  searchStudentByNameAction,
+} from "../Redux/Actions/StudentsAction";
 import "../App.css";
 
 function StudentList() {
@@ -21,8 +24,13 @@ function StudentList() {
   };
 
   const handleDeleteStudent = (id) => {
-    console.log("handleDeleteStudent function called")
-    dispatch(deleteStudentDetailAction(id));
+    console.log("handleDeleteStudent function called");
+    dispatch(deleteStudentDetailAction({ id }));
+  };
+
+  const handleSearch = (event) => {
+    console.log("Heyyy", event.target.value)
+    dispatch(searchStudentByNameAction({ name: event.target.value }));
   };
 
   console.log("studentList", studentList);
@@ -34,6 +42,7 @@ function StudentList() {
       <br />
       <div className="title">
         <h1 className="student">Students Details</h1>
+        <input placeholder="Search by student name" onChange={handleSearch} />
         <button className="btnEdit" onClick={handleAddNewStudent}>
           Add New Student
         </button>
